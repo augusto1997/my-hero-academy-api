@@ -7,5 +7,7 @@ defmodule MyheroacademyapiWeb.Router do
 
   scope "/api", MyheroacademyapiWeb do
     pipe_through :api
+
+    resources "/heros", HeroController, except: [:new, :edit]
   end
 end

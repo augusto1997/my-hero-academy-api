@@ -9,7 +9,8 @@ services:
     networks:
       - localhost
     volumes:
-      - ../pg-data:/var/lib/postgresql/data
+      - ./pg-data:/var/lib/postgresql/data
+      - ./postgres.conf:/etc/postgresql/postgresql.conf
 
 networks:
   localhost:
