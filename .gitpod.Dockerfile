@@ -2,8 +2,7 @@ FROM gitpod/workspace-full
 
 USER gitpod
 
-RUN sudo wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
-RUN sudo apt update && sudo apt-get install esl-erlang elixir
+RUN brew install elixir
 
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
