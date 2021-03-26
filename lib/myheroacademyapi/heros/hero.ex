@@ -2,10 +2,13 @@ defmodule Myheroacademyapi.Heros.Hero do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Myheroacademyapi.Quircks.Quirck
+
   schema "heros" do
     field :first_name, :string
     field :last_name, :string
     field :nick_name, :string
+    has_one :quirck, Quirck
 
     timestamps()
   end
