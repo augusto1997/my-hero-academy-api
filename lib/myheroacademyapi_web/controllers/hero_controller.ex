@@ -1,62 +1,10 @@
 defmodule MyheroacademyapiWeb.HeroController do
   use MyheroacademyapiWeb, :controller
-  use PhoenixSwagger
 
   alias Myheroacademyapi.Heros
   alias Myheroacademyapi.Heros.Hero
 
   action_fallback MyheroacademyapiWeb.FallbackController
-
-  def swagger_definitions do
-    %{
-      Hero:
-        swagger_schema do
-          title("Hero")
-          description("A Hero of the application")
-
-          properties do
-            id(:integer, "Unique identifier", required: true)
-            first_name(:string, "First name", required: true)
-            last_name(:string, "Last name", required: true)
-            nick_name(:string, "Nick name",  required: true)
-          end
-
-          example(%{
-            first_name: "Izuku",
-            last_name: "Midoriya",
-            id: "1",
-            nick_name: "Deku"
-          })
-        end,
-      Heros:
-        swagger_schema do
-          title("Heros")
-          description("A collection of Heros")
-          type(:array)
-          items(Schema.ref(:Hero))
-        end
-    }
-  end
-
-  swagger_path :index do
-    get("/api/heros")
-    summary("List of Heros")
-    description("Returns an List of Heros Entities Records from Database")
-    produces("application/json")
-
-    response(200, "OK", Schema.ref(:Heros),
-      example: %{
-        data: [
-          %{
-            id: 1,
-            first_name: "Izuku",
-            last_name: "Midoriya",
-            nick_name: "Deku"
-          }
-        ]
-      }
-    )
-  end
 
   def index(conn, _params) do
     heros = Heros.list_heros()
