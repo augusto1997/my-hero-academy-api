@@ -9,6 +9,6 @@ defmodule MyheroacademyapiWeb.Router do
     pipe_through :api
 
     resources "/heros", HeroController, except: [:new, :edit]
-    resources "/quircks", QuirckController, except: [:new, :edit]
+    resources "/quirks", QuirkController, except: [:new, :edit]
   end
 end

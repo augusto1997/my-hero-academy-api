@@ -1,10 +1,10 @@
-defmodule Myheroacademyapi.Quircks.Quirck do
+defmodule Myheroacademyapi.Quirks.Quirk do
   use Ecto.Schema
   import Ecto.Changeset
 
   alias Myheroacademyapi.Heros.Hero
 
-  schema "quircks" do
+  schema "quirks" do
     field :description, :string
     field :name, :string
     belongs_to :hero, Hero
@@ -13,10 +13,10 @@ defmodule Myheroacademyapi.Quircks.Quirck do
   end
 
   @doc false
-  def changeset(quirck, attrs) do
-    quirck
-    |> cast(attrs, [:name, :description, :hero_id])
-    |> validate_required([:name, :description, :hero_id])
+  def changeset(quirk, attrs) do
+    quirk
+    |> cast(attrs, [:name, :description])
+    |> validate_required([:name, :description])
     |> assoc_constraint(:hero)
   end
 end
