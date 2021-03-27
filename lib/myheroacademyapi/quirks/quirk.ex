@@ -15,8 +15,8 @@ defmodule Myheroacademyapi.Quirks.Quirk do
   @doc false
   def changeset(quirk, attrs) do
     quirk
-    |> cast(attrs, [:name, :description])
-    |> validate_required([:name, :description])
+    |> cast(attrs, [:name, :description, :hero_id])
+    |> validate_required([:name, :description, :hero_id])
     |> assoc_constraint(:hero)
   end
 end
